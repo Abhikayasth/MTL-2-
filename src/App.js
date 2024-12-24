@@ -33,70 +33,70 @@ function App() {
     setTimeout(() => setIsLoading(false), 2500);
   }, []);
 
-  if (isLoading) {
-    return <LoadingScreen />;
-  }
-
   return (
     <Router>
-      <Routes>
-        {/* Default Loading Page */}
-        <Route path="/" element={<LoadingScreen />} />
+      {isLoading ? (
+        <LoadingScreen />
+      ) : (
+        <Routes>
+          {/* Default Loading Page */}
+          <Route path="/" element={<LoadingScreen />} />
 
-        {/* Main App Route */}
-        <Route
-          path="/main"
-          element={
-            <div className="relative min-h-screen bg-black text-white overflow-hidden">
-              <StructuredData />
-              <Suspense fallback={<LoadingScreen />}>
-                <InteractiveBackground />
-              </Suspense>
-              <Header />
-              <main>
-                <Hero />
-                <Services />
-                <Portfolio />
-                <Process />
-                <Timeline />
-                <Team />
-                <SuccessStories />
-                <Testimonials />
-                <Blog />
-                <FAQ />
-                <ContactCTA />
-              </main>
-              <Footer />
-              <Chatbot />
-              <WebsiteGuide />
-            </div>
-          }
-        />
+          {/* Main App Route */}
+          <Route
+            path="/main"
+            element={
+              <div className="relative min-h-screen bg-black text-white overflow-hidden">
+                <StructuredData />
+                <Suspense fallback={<LoadingScreen />}>
+                  <InteractiveBackground />
+                </Suspense>
+                <Header />
+                <main>
+                  <Hero />
+                  <Services />
+                  <Portfolio />
+                  <Process />
+                  <Timeline />
+                  <Team />
+                  <SuccessStories />
+                  <Testimonials />
+                  <Blog />
+                  <FAQ />
+                  <ContactCTA />
+                </main>
+                <Footer />
+                <Chatbot />
+                <WebsiteGuide />
+              </div>
+            }
+          />
 
-        {/* Contact Us Page */}
-        <Route
-          path="/contact-us"
-          element={
-            <div className="relative min-h-screen bg-black text-white">
-              <Header />
-              <ContactPage />
-              <Footer />
-            </div>
-          }
-        />
+          {/* Contact Us Page */}
+          <Route
+            path="/contact-us"
+            element={
+              <div className="relative min-h-screen bg-black text-white">
+                <Header />
+                <ContactPage />
+                <Footer />
+              </div>
+            }
+          />
 
-        {/* Detailed Services Page */}
-        <Route
-          path="/detailed-services"
-          element={
-            <div className="relative min-h-screen bg-gradient-to-br from-indigo-50 to-blue-100 text-gray-900">
-              <Header />
-              <DetailedServices />
-              <Footer />
-            </div>
-          }
-        />
-      </Routes>
+          {/* Detailed Services Page */}
+          <Route
+            path="/detailed-services"
+            element={
+              <div className="relative min-h-screen bg-gradient-to-br from-indigo-50 to-blue-100 text-gray-900">
+                <Header />
+                <DetailedServices />
+                <Footer />
+              </div>
+            }
+          />
+        </Routes>
+      )}
     </Router>
   );
 }
